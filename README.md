@@ -29,3 +29,5 @@ Descripciones claras y concisas para cada gráfico, facilitando la interpretaci�
 Una paleta de colores consistente y elegante para una estética profesional.
 
 Manejo de errores para informar al usuario si no hay datos para los filtros seleccionados, evitando que la aplicación se congele.
+
+https://proyecto-7-tr8h.onrender.com/
