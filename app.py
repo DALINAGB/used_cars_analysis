@@ -121,29 +121,29 @@ else:
         st.plotly_chart(fig1, use_container_width=True)
         st.markdown("---")
 
-  if mostrar_dispersion:
-    st.subheader('🔍 Relación entre Precio y Kilometraje por Condición')
-    st.write('Este gráfico muestra la relación entre el precio del vehículo y su kilometraje. La línea de tendencia ayuda a visualizar cómo el precio tiende a disminuir con el kilometraje.')
+    if mostrar_dispersion:
+        st.subheader('🔍 Relación entre Precio y Kilometraje por Condición')
+        st.write('Este gráfico muestra la relación entre el precio del vehículo y su kilometraje. La línea de tendencia ayuda a visualizar cómo el precio tiende a disminuir con el kilometraje.')
 
-    try:
-        # Intenta crear el gráfico con la línea de tendencia 'ols'
-        fig2 = px.scatter(filtered_data, x='odometer', y='price', color='condition',
-                          title='Relación entre Precio y Kilometraje por Condición',
-                          labels={'odometer': 'Kilometraje', 'price': 'Precio ($)', 'condition': 'Condición'},
-                          trendline='ols', opacity=0.7,
-                          color_discrete_map=colores_sutiles)
-    except ValueError:
-        # Si statsmodels no está instalado, crea el gráfico sin la línea de tendencia
-        st.warning('La línea de tendencia OLS requiere la librería statsmodels. Instálala con `pip install statsmodels` para verla.')
-        fig2 = px.scatter(filtered_data, x='odometer', y='price', color='condition',
-                          title='Relación entre Precio y Kilometraje por Condición',
-                          labels={'odometer': 'Kilometraje', 'price': 'Precio ($)', 'condition': 'Condición'},
-                          opacity=0.7,
-                          color_discrete_map=colores_sutiles)
+        try:
+            # Intenta crear el gráfico con la línea de tendencia 'ols'
+            fig2 = px.scatter(filtered_data, x='odometer', y='price', color='condition',
+                              title='Relación entre Precio y Kilometraje por Condición',
+                              labels={'odometer': 'Kilometraje', 'price': 'Precio ($)', 'condition': 'Condición'},
+                              trendline='ols', opacity=0.7,
+                              color_discrete_map=colores_sutiles)
+        except ValueError:
+            # Si statsmodels no está instalado, crea el gráfico sin la línea de tendencia
+            st.warning('La línea de tendencia OLS requiere la librería statsmodels. Instálala con `pip install statsmodels` para verla.')
+            fig2 = px.scatter(filtered_data, x='odometer', y='price', color='condition',
+                              title='Relación entre Precio y Kilometraje por Condición',
+                              labels={'odometer': 'Kilometraje', 'price': 'Precio ($)', 'condition': 'Condición'},
+                              opacity=0.7,
+                              color_discrete_map=colores_sutiles)
 
-    fig2.update_layout(title_font_size=16, title_x=0.5, plot_bgcolor='white', paper_bgcolor='white')
-    st.plotly_chart(fig2, use_container_width=True)
-    st.markdown("---")
+        fig2.update_layout(title_font_size=16, title_x=0.5, plot_bgcolor='white', paper_bgcolor='white')
+        st.plotly_chart(fig2, use_container_width=True)
+        st.markdown("---")
 
     if mostrar_histograma_condicion:
         st.subheader('🚗 Distribución de la Condición de los Vehículos')
@@ -172,3 +172,4 @@ else:
         fig4.update_layout(title_font_size=16, title_x=0.5, plot_bgcolor='white', paper_bgcolor='white')
         st.plotly_chart(fig4, use_container_width=True)
         st.markdown("---")
+
